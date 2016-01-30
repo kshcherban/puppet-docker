@@ -1,0 +1,30 @@
+server {
+    listen 4243;
+    root /dev/null;
+    server_name _;
+    access_log /var/log/nginx/docker-proxy.log;
+
+    location / {
+    <%- if @nginx_proxy_auth -%>
+        <%- if @nginx_proxy_allowip -%>
+        satisfy any;
+            <%- @nginx_proxy_allowip.each do |ip| -%>
+        allow <%= ip %>;
+            <%- end -%>
+        deny all;
+        <%- end -%>
+        auth_basic "Restricted";
+        auth_basic_user_file /etc/nginx/.passwd;
+    <%- end -%>
+<%= scope.function_template(["docker/docker-proxy.conf.erb"]) -%>
+    }
+
+    location /_ping {
+        auth_basic off;
+<%= scope.function_template(["docker/docker-proxy.conf.erb"]) -%>
+    }
+    location /v1/_ping {
+        auth_basic off;
+<%= scope.function_template(["docker/docker-proxy.conf.erb"]) -%>
+    }
+}

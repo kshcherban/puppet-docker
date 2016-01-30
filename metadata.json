@@ -1,0 +1,22 @@
+{
+  "author": "k.scherban@gmail.com",
+  "dependencies": [
+    {}
+  ],
+  "license": "",
+  "name": "docker",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04"
+      ]
+    }
+  ],
+  "project_page": "https://github.com/kshcherban/puppet-docker",
+  "requirements": [],
+  "source": "",
+  "summary": "",
+  "tags": [],
+  "version": "0.2.1"
+}

@@ -1,0 +1,4 @@
+# This file is managed by Puppet, do not modify it locally
+
+# Use DOCKER_OPTS to modify the daemon startup options.
+DOCKER_OPTS="<%- if @dns_server -%>--dns=<%= @dns_server %> <%-end-%>--graph=<%= @graph_dir %><%- if @host -%><%- @host.each do |h| -%>  --host=<%= h %><%-end-%><%-end-%><%- if @insecure_registry -%> --insecure-registry=<%= @insecure_registry %><%-end-%>"
