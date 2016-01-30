@@ -1,5 +1,8 @@
 # puppet-docker
-Puppet module to manage docker server
+Puppet module to manage docker server.  
+It installs docker package, manages /etc/default/docker, can setup nginx proxy and configure accesses to it.  
+Depends on puppetlabs/apt, tested on Ubuntu 14.04  
+
 
 Example setup that includes nginx proxy with basic auth.
 

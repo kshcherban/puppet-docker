@@ -25,8 +25,19 @@ class docker (
 # Nginx proxy port
     $nginx_proxy_port     = 4243,
 ) {
+    apt::source { 'docker':
+        location => 'http://apt.dockerproject.org/repo',
+        release  => 'ubuntu-trusty',
+        repos    => 'main',
+        key      => {
+            'id'     => '58118E89F3A912897C070ADBF76221572C52609D',
+            'server' => 'pgp.mit.edu',
+        },
+    }
+    ->
     package {$package_name:
         ensure  => $version,
+        require => Exec['apt_update'],
     }
     ->
     service {'docker':
