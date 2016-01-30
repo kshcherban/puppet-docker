@@ -3,7 +3,7 @@ Puppet module to manage docker server
 
 Example setup that includes nginx proxy with basic auth.
 
-```
+```puppet
 class {'docker':
     nginx_proxy      => true,
     nginx_proxy_auth => true,
