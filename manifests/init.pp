@@ -58,8 +58,8 @@ class docker (
             require => Service['docker'],
         }
         ->
-# Changing nginx group needed to access socket
-        user {'nginx':
+# Changing www-data group needed to access socket
+        user {'www-data':
             groups => ['docker'],
         }
         ->
